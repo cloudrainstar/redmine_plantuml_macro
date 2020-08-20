@@ -23,8 +23,7 @@ Redmine::Plugin.register :redmine_mermaid_macro do
     macro :mermaid do |obj, args, text|
       divid = "mermaid_" + SecureRandom.urlsafe_base64(8)
       out = ''.html_safe
-      out << content_tag(:div, text, id: divid, class: 'mermaid')
-      out << javascript_tag("if (typeof mermaidInitialized != 'undefined') {mermaid.init(undefined, $('#" + divid + "'));};")
+      out << content_tag("mermaid-graph", text, id: divid)
       out
     end
   end
