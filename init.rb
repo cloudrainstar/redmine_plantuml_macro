@@ -8,7 +8,7 @@ Redmine::Plugin.register :redmine_mermaid_macro do
   url 'https://github.com/taikii/redmine_mermaid_macro'
   author_url 'https://taikii.github.io'
 
-  settings :default => { 'mermaid_url' => 'https://unpkg.com/mermaid/dist/mermaid.min.js' },
+  settings :default => { 'mermaid_url' => 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js' },
            :partial => 'settings/redmine_mermaid_macro_settings'
 
   Redmine::WikiFormatting::Macros.register do
