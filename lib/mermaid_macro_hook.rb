@@ -6,6 +6,7 @@ class MermaidMacroHookListener < Redmine::Hook::ViewListener
     html = ""
     html << javascript_include_tag(Setting.plugin_redmine_mermaid_macro['mermaid_url'])
     html << javascript_include_tag(:mermaid, :plugin => 'redmine_mermaid_macro')
+    html << javascript_tag("mermaid.initialize({startOnLoad:true});")
     return html
   end
 

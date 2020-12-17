@@ -1,16 +1,8 @@
 class MermaidGraph extends HTMLElement {
     constructor() {
       super();
-      
       const wrapper = document.createElement('div');
-  
-      while (this.childNodes.length > 0) {
-          wrapper.appendChild(this.childNodes[0]);
-      }
-      
-      this.appendChild(wrapper);
-      mermaid.init({ startOnLoad:true }, wrapper);
-  
+      mermaid.mermaidAPI.render('graphDiv', this.childNodes[0].textContent, (svgGraph) => {wrapper.innerHTML = svgGraph});
       const root = this.attachShadow({mode: 'open'});
       root.appendChild(wrapper);
     }
