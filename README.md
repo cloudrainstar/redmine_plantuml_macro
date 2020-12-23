@@ -1,18 +1,17 @@
-# Redmine Mermaid Macro Plugin
+# Redmine PlantUML Macro Plugin
 
-This plugin adds a `mermaid` graph macro to wiki formated fields. 
+This plugin adds a `plantuml` graph macro to wiki formated fields.
+This plugin uses POST requests, so you should have an external server set up that accepts PlantUML POST requests.
 
-About mermaid: https://mermaidjs.github.io
+About PlantUML: https://plantuml.com/
 
 ## Example
 
 ```
-{{mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+{{plantuml
+@startuml
+Bob -> Alice : hello
+@enduml
 }}
 ```
 
@@ -22,15 +21,15 @@ graph TD;
 
 1. Clone or copy files into the Redmine plugins directory
    ```
-   git clone https://github.com/taikii/redmine_mermaid_macro.git plugins/redmine_mermaid_macro
+   git clone https://github.com/cloudrainstar/redmine_plantuml_macro.git plugins/redmine_plantuml_macro
    ```
 2. Restart Redmine
 
 ## Configration
 
-You can configure `mermaid.js` URL on `Administration -> Plugins` page.
-Default value is UNPKG CDN.
-https://unpkg.com/mermaid/dist/mermaid.min.js
+You can configure the external `plantuml` server URL on `Administration -> Plugins` page.
+Default value is PlantUML Online Server, but this will not work.
+http://www.plantuml.com/svg/
 
 ## License
 

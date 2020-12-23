@@ -1,29 +1,27 @@
-Redmine::Plugin.register :redmine_mermaid_macro do
-  require 'mermaid_macro_hook'
+Redmine::Plugin.register :redmine_plantuml_macro do
+  require 'plantuml_macro_hook'
 
-  name 'Redmine Mermaid Macro plugin'
-  author 'Taiki IKEGAME'
-  description 'Add mermaid graphs to your wiki.'
+  name 'Redmine PlantUML Macro plugin'
+  author 'Ken Liao'
+  description 'Add plantuml graphs to your wiki through an external server.'
   version '1.0.0'
-  url 'https://github.com/taikii/redmine_mermaid_macro'
-  author_url 'https://taikii.github.io'
+  url 'https://github.com/cloudrainstar/redmine_plantuml_macro'
+  author_url 'https://cloudrainstar.github.io'
 
-  settings :default => { 'mermaid_url' => 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js' },
-           :partial => 'settings/redmine_mermaid_macro_settings'
+  settings :default => { 'plantuml_url' => 'http://www.plantuml.com/svg/' },
+           :partial => 'settings/redmine_plantuml_macro_settings'
 
   Redmine::WikiFormatting::Macros.register do
-    desc "Add mermaid graphs to your wiki. Example:\n\n" +
-         "{{mermaid\n" +
-         "graph TD;\n" +
-         "    A-->B;\n" +
-         "    A-->C;\n" +
-         "    B-->D;\n" +
-         "    C-->D;\n" +
+    desc "Add plantuml graphs to your wiki. Example:\n\n" +
+         "{{plantuml\n" +
+         "@startuml;\n" +
+         "Bob -> Alice : hello;\n" +
+         "@enduml;\n" +
          "}}"
-    macro :mermaid do |obj, args, text|
-      divid = "mermaid_" + SecureRandom.urlsafe_base64(8)
+    macro :plantuml do |obj, args, text|
+      divid = "plantuml_" + SecureRandom.urlsafe_base64(8)
       out = ''.html_safe
-      out << content_tag("mermaid-graph", text, id: divid)
+      out << content_tag("plantuml-graph", text, id: divid)
       out
     end
   end
