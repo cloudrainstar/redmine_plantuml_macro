@@ -1,5 +1,6 @@
 # Redmine PlantUML Macro Plugin
 
+This plugin is modified from https://github.com/cloudrainstar/redmine_mermaid_macro, which is a fork of https://github.com/eXolnet/redmine_mermaid_macro, which is another fork of https://github.com/taikii/redmine_mermaid_macro.
 This plugin adds a `plantuml` graph macro to wiki formated fields.
 This plugin uses POST requests, so you should have an external server set up that accepts PlantUML POST requests.
 
