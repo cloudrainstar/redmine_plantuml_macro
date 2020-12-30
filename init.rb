@@ -21,7 +21,7 @@ Redmine::Plugin.register :redmine_plantuml_macro do
     macro :plantuml do |obj, args, text|
       divid = "plantuml_" + SecureRandom.urlsafe_base64(8)
       out = ''.html_safe
-      out << content_tag("plantuml-graph", text, id: divid)
+      out << content_tag("plantuml-graph", text, id: divid, url: Setting.plugin_redmine_plantuml_macro['plantuml_url'])
       out
     end
   end
