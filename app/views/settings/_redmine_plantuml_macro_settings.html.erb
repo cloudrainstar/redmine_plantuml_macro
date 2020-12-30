@@ -1,1 +1,2 @@
 <p><label>PlantUML URL</label><%= text_field_tag 'settings[plantuml_url]', @settings['plantuml_url'], size: 100 %></p>
+<p><label>GET or POST</label><%= radio_button_tag 'settings[plantuml_method]', 'GET', @settings['plantuml_method'] == 'GET' %><%= radio_button_tag 'settings[plantuml_method]', 'POST', @settings['plantuml_method'] == 'POST' %></p>

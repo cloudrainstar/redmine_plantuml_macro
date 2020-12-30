@@ -8,7 +8,7 @@ Redmine::Plugin.register :redmine_plantuml_macro do
   url 'https://github.com/cloudrainstar/redmine_plantuml_macro'
   author_url 'https://cloudrainstar.github.io'
 
-  settings :default => { 'plantuml_url' => 'http://www.plantuml.com/svg/' },
+  settings :default => { 'plantuml_url' => 'https://www.plantuml.com/plantuml/svg/', 'plantuml_method' => 'GET' },
            :partial => 'settings/redmine_plantuml_macro_settings'
 
   Redmine::WikiFormatting::Macros.register do
@@ -21,7 +21,7 @@ Redmine::Plugin.register :redmine_plantuml_macro do
     macro :plantuml do |obj, args, text|
       divid = "plantuml_" + SecureRandom.urlsafe_base64(8)
       out = ''.html_safe
-      out << content_tag("plantuml-graph", text, id: divid, url: Setting.plugin_redmine_plantuml_macro['plantuml_url'])
+      out << content_tag("plantuml-graph", text, id: divid, url: Setting.plugin_redmine_plantuml_macro['plantuml_url'], method: Setting.plugin_redmine_plantuml_macro['plantuml_method'])
       out
     end
   end
